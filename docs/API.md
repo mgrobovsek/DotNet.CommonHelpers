@@ -3,6 +3,25 @@
 
 ## Contents
 
+- [AppSettingNotFoundException](#T-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException')
+  - [#ctor()](#M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException.#ctor')
+  - [#ctor(message)](#M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-String- 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException.#ctor(System.String)')
+  - [#ctor(message,innerException)](#M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-String,System-Exception- 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException.#ctor(System.String,System.Exception)')
+  - [#ctor(info,context)](#M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-Runtime-Serialization-SerializationInfo,System-Runtime-Serialization-StreamingContext- 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)')
+- [AppSettings](#T-DotNet-CommonHelpers-AppSettings 'DotNet.CommonHelpers.AppSettings')
+  - [Get\`\`1(key)](#M-DotNet-CommonHelpers-AppSettings-Get``1-System-String- 'DotNet.CommonHelpers.AppSettings.Get``1(System.String)')
+- [DBHelper](#T-DotNet-CommonHelpers-Extensions-DBHelper 'DotNet.CommonHelpers.Extensions.DBHelper')
+  - [ConnectionString](#P-DotNet-CommonHelpers-Extensions-DBHelper-ConnectionString 'DotNet.CommonHelpers.Extensions.DBHelper.ConnectionString')
+  - [QueryCommandTimeout](#P-DotNet-CommonHelpers-Extensions-DBHelper-QueryCommandTimeout 'DotNet.CommonHelpers.Extensions.DBHelper.QueryCommandTimeout')
+  - [QueryDT(sqlQuery,connectionString,timeout)](#M-DotNet-CommonHelpers-Extensions-DBHelper-QueryDT-System-String,System-String,System-Nullable{System-Int32}- 'DotNet.CommonHelpers.Extensions.DBHelper.QueryDT(System.String,System.String,System.Nullable{System.Int32})')
+- [RawQuery](#T-DotNet-CommonHelpers-Extensions-RawQuery 'DotNet.CommonHelpers.Extensions.RawQuery')
+  - [ConnectionString](#P-DotNet-CommonHelpers-Extensions-RawQuery-ConnectionString 'DotNet.CommonHelpers.Extensions.RawQuery.ConnectionString')
+  - [Execute(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-Execute-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.Execute(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
+  - [ExecuteAsync(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteAsync-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.ExecuteAsync(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
+  - [ExecuteScalarAsync\`\`1(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteScalarAsync``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.ExecuteScalarAsync``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
+  - [ExecuteScalar\`\`1(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteScalar``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.ExecuteScalar``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
+  - [QueryAsync\`\`1(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-QueryAsync``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.QueryAsync``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
+  - [Query\`\`1(cString,sql,param,transaction,buffered,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-Query``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Boolean,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.Query``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
 - [StringExtensions](#T-Dotnet-CommonHelpers-Extensions-StringExtensions 'Dotnet.CommonHelpers.Extensions.StringExtensions')
   - [SpecialChars](#F-Dotnet-CommonHelpers-Extensions-StringExtensions-SpecialChars 'Dotnet.CommonHelpers.Extensions.StringExtensions.SpecialChars')
   - [ConvertHexToBin()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-ConvertHexToBin-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.ConvertHexToBin(System.String)')
@@ -29,6 +48,399 @@
   - [TrimStartSpecialChars()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-TrimStartSpecialChars-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.TrimStartSpecialChars(System.String)')
   - [TruncateAtWord(text,length)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-TruncateAtWord-System-String,System-Int32- 'Dotnet.CommonHelpers.Extensions.StringExtensions.TruncateAtWord(System.String,System.Int32)')
   - [TryParseInt32()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-TryParseInt32-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.TryParseInt32(System.String)')
+
+<a name='T-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException'></a>
+## AppSettingNotFoundException `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Exceptions
+
+##### Summary
+
+Represents errors that occur during application execution.
+
+<a name='M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Initializes a new instance of the AppSettingNotFoundException
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-String-'></a>
+### #ctor(message) `constructor`
+
+##### Summary
+
+Initializes a new instance of the AppSettingNotFoundException class with a specified error message
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The message that describes the error. |
+
+<a name='M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-String,System-Exception-'></a>
+### #ctor(message,innerException) `constructor`
+
+##### Summary
+
+Initializes a new instance of the AppSettingNotFoundException class with a specified error
+message and a reference to the inner exception that is the cause of this exception.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| message | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The message that describes the error. |
+| innerException | [System.Exception](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Exception 'System.Exception') | The exception that is the cause of the current exception, or a null reference if no inner exception is specified. |
+
+<a name='M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-Runtime-Serialization-SerializationInfo,System-Runtime-Serialization-StreamingContext-'></a>
+### #ctor(info,context) `constructor`
+
+##### Summary
+
+Initializes a new instance of the AppSettingNotFoundException class with serialized data.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| info | [System.Runtime.Serialization.SerializationInfo](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Runtime.Serialization.SerializationInfo 'System.Runtime.Serialization.SerializationInfo') | The System.Runtime.Serialization.SerializationInfo that holds the serialized object data about the exception being thrown. |
+| context | [System.Runtime.Serialization.StreamingContext](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Runtime.Serialization.StreamingContext 'System.Runtime.Serialization.StreamingContext') | The System.Runtime.Serialization.StreamingContext that contains contextual information about the source or destination. |
+
+<a name='T-DotNet-CommonHelpers-AppSettings'></a>
+## AppSettings `type`
+
+##### Namespace
+
+DotNet.CommonHelpers
+
+##### Summary
+
+
+
+<a name='M-DotNet-CommonHelpers-AppSettings-Get``1-System-String-'></a>
+### Get\`\`1(key) `method`
+
+##### Summary
+
+Easier reading of `App.config` parameters.
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| key | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Appsettings key |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type of the parameter |
+
+##### Exceptions
+
+| Name | Description |
+| ---- | ----------- |
+| [DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException](#T-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException') | Thrown when specified key is not found in the appsettings |
+
+##### Example
+
+```csharp
+var timeret = AppSettings.Get&lt;int&gt;("Timeout");                
+```
+
+<a name='T-DotNet-CommonHelpers-Extensions-DBHelper'></a>
+## DBHelper `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Makes querying the database easier/more elegant
+
+<a name='P-DotNet-CommonHelpers-Extensions-DBHelper-ConnectionString'></a>
+### ConnectionString `property`
+
+##### Summary
+
+Global connection string. It has to be set if you wish to execute queries without specifying the connectionString
+
+<a name='P-DotNet-CommonHelpers-Extensions-DBHelper-QueryCommandTimeout'></a>
+### QueryCommandTimeout `property`
+
+##### Summary
+
+Global query CommandTimeout in seconds
+
+<a name='M-DotNet-CommonHelpers-Extensions-DBHelper-QueryDT-System-String,System-String,System-Nullable{System-Int32}-'></a>
+### QueryDT(sqlQuery,connectionString,timeout) `method`
+
+##### Summary
+
+Executes the query. If connectionString and timeout are null it takes the default settings.
+If ConnectionString is null you have to set it before the 1st call with DBHelper.ConnectionString=...
+
+##### Returns
+
+Results of the query in a datatable
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| sqlQuery | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | SQL query to be executed |
+| connectionString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | SQL Database connection string |
+| timeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | Command timeout in seconds |
+
+##### Example
+
+```csharp
+var data = "SELECT * FROM [dbo].[Table]".QueryDT(); // gets results of the query as a DataTable        
+```
+
+<a name='T-DotNet-CommonHelpers-Extensions-RawQuery'></a>
+## RawQuery `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Helpers for better looking dapper queries
+ex.
+var data = "SELECT ID, Name FROM dbo.MyTable".Query<dynamic>(cString);
+
+<a name='P-DotNet-CommonHelpers-Extensions-RawQuery-ConnectionString'></a>
+### ConnectionString `property`
+
+##### Summary
+
+Default connection string. It has to be set if you want to use Query commands without specifying the connection stirng
+
+##### Example
+
+```csharp
+RawQuery.ConnectionString = "myconnection string...";
+var data = "SELECT * FROM TestTable".Query&lt;dynamic&gt;();
+```
+
+<a name='M-DotNet-CommonHelpers-Extensions-RawQuery-Execute-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}-'></a>
+### Execute(cString,sql,param,transaction,commandTimeout,commandType) `method`
+
+##### Summary
+
+Execute parameterized SQL.
+
+##### Returns
+
+The number of rows affected.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The connection string to query on. If cString is null you have to set it before the 1st call with RawQuery.ConnectionString |
+| sql | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The SQL to execute for this query. |
+| param | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The parameters to use for this query. |
+| transaction | [System.Data.IDbTransaction](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.IDbTransaction 'System.Data.IDbTransaction') | The transaction to use for this query. |
+| commandTimeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | Number of seconds before command execution timeout. |
+| commandType | [System.Nullable{System.Data.CommandType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Data.CommandType}') | Is it a stored proc or a batch? |
+
+##### Example
+
+```csharp
+"EXEC dbo.DoSomething @id".Execute(param: new {id=123}); // executes stored procedure dbo.DoSomething with the parameter @id = 123
+```
+
+<a name='M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteAsync-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}-'></a>
+### ExecuteAsync(cString,sql,param,transaction,commandTimeout,commandType) `method`
+
+##### Summary
+
+Execute a command asynchronously using Task.
+
+##### Returns
+
+The number of rows affected.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The connection string to query on. If cString is null you have to set it before the 1st call with RawQuery.ConnectionString |
+| sql | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The SQL to execute for this query. |
+| param | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The parameters to use for this query. |
+| transaction | [System.Data.IDbTransaction](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.IDbTransaction 'System.Data.IDbTransaction') | The transaction to use for this query. |
+| commandTimeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | Number of seconds before command execution timeout. |
+| commandType | [System.Nullable{System.Data.CommandType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Data.CommandType}') | Is it a stored proc or a batch? |
+
+##### Example
+
+```csharp
+await "EXEC dbo.DoSomething @id".ExecuteAsync(param: new {id=123}); // executes stored procedure dbo.DoSomething with the parameter @id = 123
+```
+
+<a name='M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteScalarAsync``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}-'></a>
+### ExecuteScalarAsync\`\`1(cString,sql,param,transaction,commandTimeout,commandType) `method`
+
+##### Summary
+
+Execute parameterized SQL that selects a single value asynchronously using Task.
+
+##### Returns
+
+The first cell returned, as `TEntity`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The connection string to query on. If cString is null you have to set it before the 1st call with RawQuery.ConnectionString |
+| sql | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The SQL to execute. |
+| param | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The parameters to use for this command. |
+| transaction | [System.Data.IDbTransaction](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.IDbTransaction 'System.Data.IDbTransaction') | The transaction to use for this command. |
+| commandTimeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | Number of seconds before command execution timeout. |
+| commandType | [System.Nullable{System.Data.CommandType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Data.CommandType}') | Is it a stored proc or a batch? |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TEntity | The type to return. |
+
+##### Example
+
+```csharp
+var tableRowCount = await "SELECT count(1) FROM [dbo].[Table]".ExecuteScalarAsync&lt;int&gt;(); // gets number of records of dbo.Table        
+```
+
+<a name='M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteScalar``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}-'></a>
+### ExecuteScalar\`\`1(cString,sql,param,transaction,commandTimeout,commandType) `method`
+
+##### Summary
+
+Execute parameterized SQL that selects a single value.
+
+##### Returns
+
+The first cell returned, as `TEntity`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The connection string to query on. If cString is null you have to set it before the 1st call with RawQuery.ConnectionString |
+| sql | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The SQL to execute. |
+| param | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The parameters to use for this command. |
+| transaction | [System.Data.IDbTransaction](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.IDbTransaction 'System.Data.IDbTransaction') | The transaction to use for this command. |
+| commandTimeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | Number of seconds before command execution timeout. |
+| commandType | [System.Nullable{System.Data.CommandType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Data.CommandType}') | Is it a stored proc or a batch? |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TEntity | The type to return. |
+
+##### Example
+
+```csharp
+var tableRowCount = "SELECT count(1) FROM [dbo].[Table]".ExecuteScalar&lt;int&gt;(); // gets number of records of dbo.Table        
+```
+
+<a name='M-DotNet-CommonHelpers-Extensions-RawQuery-QueryAsync``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}-'></a>
+### QueryAsync\`\`1(cString,sql,param,transaction,commandTimeout,commandType) `method`
+
+##### Summary
+
+Executes a query asynchronously using Task, returning the data typed as `TEntity`.
+
+##### Returns
+
+A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The connection string to query on. If cString is null you have to set it before the 1st call with RawQuery.ConnectionString |
+| sql | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The SQL to execute for the query. |
+| param | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The parameters to pass, if any. |
+| transaction | [System.Data.IDbTransaction](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.IDbTransaction 'System.Data.IDbTransaction') | The transaction to use, if any. |
+| commandTimeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | The command timeout (in seconds). |
+| commandType | [System.Nullable{System.Data.CommandType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Data.CommandType}') | The type of command to execute. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TEntity | The type of results to return. |
+
+##### Example
+
+```csharp
+var data = await "SELECT * FROM [dbo].[Table]".QueryAsync&lt;dynamic&gt;(); // gets results of the query as IEnumerble dynamic type
+class Table{
+    public int ID {get;set;}
+    public string Name {get;set;}
+}
+var tableData = await "SELECT * FROM [dbo].[Table]".QueryAsync&lt;Table&gt;(); // gets results of the query and mapps them to IEnumerable&lt;Table&gt;
+```
+
+<a name='M-DotNet-CommonHelpers-Extensions-RawQuery-Query``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Boolean,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}-'></a>
+### Query\`\`1(cString,sql,param,transaction,buffered,commandTimeout,commandType) `method`
+
+##### Summary
+
+Executes a query, returning the data typed as `TEntity`.
+
+##### Returns
+
+A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
+created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| cString | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The connection string to query on. If cString is null you have to set it before the 1st call with RawQuery.ConnectionString |
+| sql | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The SQL to execute for the query. |
+| param | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | The parameters to pass, if any. |
+| transaction | [System.Data.IDbTransaction](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.IDbTransaction 'System.Data.IDbTransaction') | The transaction to use, if any. |
+| buffered | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | Whether to buffer results in memory. |
+| commandTimeout | [System.Nullable{System.Int32}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Int32}') | The command timeout (in seconds). |
+| commandType | [System.Nullable{System.Data.CommandType}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.Data.CommandType}') | The type of command to execute. |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TEntity | The type of results to return. |
+
+##### Example
+
+```csharp
+var data = "SELECT * FROM [dbo].[Table]".Query&lt;dynamic&gt;(); // gets results of the query as IEnumerble dynamic type
+class Table{
+    public int ID {get;set;}
+    public string Name {get;set;}
+}
+var tableData = "SELECT * FROM [dbo].[Table]".Query&lt;Table&gt;(); // gets results of the query and mapps them to IEnumerable&lt;Table&gt;
+```
 
 <a name='T-Dotnet-CommonHelpers-Extensions-StringExtensions'></a>
 ## StringExtensions `type`
