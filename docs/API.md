@@ -14,6 +14,8 @@
   - [ConnectionString](#P-DotNet-CommonHelpers-Extensions-DBHelper-ConnectionString 'DotNet.CommonHelpers.Extensions.DBHelper.ConnectionString')
   - [QueryCommandTimeout](#P-DotNet-CommonHelpers-Extensions-DBHelper-QueryCommandTimeout 'DotNet.CommonHelpers.Extensions.DBHelper.QueryCommandTimeout')
   - [QueryDT(sqlQuery,connectionString,timeout)](#M-DotNet-CommonHelpers-Extensions-DBHelper-QueryDT-System-String,System-String,System-Nullable{System-Int32}- 'DotNet.CommonHelpers.Extensions.DBHelper.QueryDT(System.String,System.String,System.Nullable{System.Int32})')
+- [ObjectShredder](#T-DotNet-CommonHelpers-Extensions-ObjectShredder 'DotNet.CommonHelpers.Extensions.ObjectShredder')
+  - [EnumerableToDataTable\`\`1(varlist)](#M-DotNet-CommonHelpers-Extensions-ObjectShredder-EnumerableToDataTable``1-System-Collections-Generic-IEnumerable{``0}- 'DotNet.CommonHelpers.Extensions.ObjectShredder.EnumerableToDataTable``1(System.Collections.Generic.IEnumerable{``0})')
 - [RawQuery](#T-DotNet-CommonHelpers-Extensions-RawQuery 'DotNet.CommonHelpers.Extensions.RawQuery')
   - [ConnectionString](#P-DotNet-CommonHelpers-Extensions-RawQuery-ConnectionString 'DotNet.CommonHelpers.Extensions.RawQuery.ConnectionString')
   - [Execute(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-Execute-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.Execute(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
@@ -22,6 +24,15 @@
   - [ExecuteScalar\`\`1(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-ExecuteScalar``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.ExecuteScalar``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
   - [QueryAsync\`\`1(cString,sql,param,transaction,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-QueryAsync``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.QueryAsync``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
   - [Query\`\`1(cString,sql,param,transaction,buffered,commandTimeout,commandType)](#M-DotNet-CommonHelpers-Extensions-RawQuery-Query``1-System-String,System-String,System-Object,System-Data-IDbTransaction,System-Boolean,System-Nullable{System-Int32},System-Nullable{System-Data-CommandType}- 'DotNet.CommonHelpers.Extensions.RawQuery.Query``1(System.String,System.String,System.Object,System.Data.IDbTransaction,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Data.CommandType})')
+- [ReflectionCopy](#T-DotNet-CommonHelpers-Extensions-ReflectionCopy 'DotNet.CommonHelpers.Extensions.ReflectionCopy')
+  - [Copy(source,destinationType)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy-System-Collections-Generic-List{System-Object},System-Type- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Copy(System.Collections.Generic.List{System.Object},System.Type)')
+  - [Copy(source,destinationType)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy-System-Object,System-Type- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Copy(System.Object,System.Type)')
+  - [CopyList\`\`1(source)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-CopyList``1-System-Object- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.CopyList``1(System.Object)')
+  - [CopyList\`\`1(source,skipParams)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-CopyList``1-System-Object,System-Collections-Generic-List{System-String}- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.CopyList``1(System.Object,System.Collections.Generic.List{System.String})')
+  - [Copy\`\`1(source,skipParams)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy``1-System-Object,System-Collections-Generic-List{System-String}- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Copy``1(System.Object,System.Collections.Generic.List{System.String})')
+  - [Copy\`\`1(source)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy``1-System-Object- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Copy``1(System.Object)')
+  - [Modify(source,destination)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Modify-System-Object,System-Object- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Modify(System.Object,System.Object)')
+  - [Modify(source,destination,skipParams)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Modify-System-Object,System-Object,System-Collections-Generic-List{System-String}- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Modify(System.Object,System.Object,System.Collections.Generic.List{System.String})')
 - [StringExtensions](#T-Dotnet-CommonHelpers-Extensions-StringExtensions 'Dotnet.CommonHelpers.Extensions.StringExtensions')
   - [SpecialChars](#F-Dotnet-CommonHelpers-Extensions-StringExtensions-SpecialChars 'Dotnet.CommonHelpers.Extensions.StringExtensions.SpecialChars')
   - [ConvertHexToBin()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-ConvertHexToBin-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.ConvertHexToBin(System.String)')
@@ -208,6 +219,52 @@ Results of the query in a datatable
 
 ```csharp
 var data = "SELECT * FROM [dbo].[Table]".QueryDT(); // gets results of the query as a DataTable        
+```
+
+<a name='T-DotNet-CommonHelpers-Extensions-ObjectShredder'></a>
+## ObjectShredder `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+
+
+<a name='M-DotNet-CommonHelpers-Extensions-ObjectShredder-EnumerableToDataTable``1-System-Collections-Generic-IEnumerable{``0}-'></a>
+### EnumerableToDataTable\`\`1(varlist) `method`
+
+##### Summary
+
+Converts an IEnumerable list to a DataTable
+
+##### Returns
+
+DataTable
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| varlist | [System.Collections.Generic.IEnumerable{\`\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{``0}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Type with parameters (getters and setters) |
+
+##### Example
+
+```csharp
+class Test { 
+    public int id { get; set; } 
+    public string name { get; set; } 
+}
+...
+var input =  new[] { new Test() { id=1, name="x" } };
+var ret = input.EnumerableToDataTable(); // returns a datatable
 ```
 
 <a name='T-DotNet-CommonHelpers-Extensions-RawQuery'></a>
@@ -441,6 +498,164 @@ class Table{
 }
 var tableData = "SELECT * FROM [dbo].[Table]".Query&lt;Table&gt;(); // gets results of the query and mapps them to IEnumerable&lt;Table&gt;
 ```
+
+<a name='T-DotNet-CommonHelpers-Extensions-ReflectionCopy'></a>
+## ReflectionCopy `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Deep copying of objects using reflection
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy-System-Collections-Generic-List{System-Object},System-Type-'></a>
+### Copy(source,destinationType) `method`
+
+##### Summary
+
+Copies an array (source) to a destination array of type destinationType
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Collections.Generic.List{System.Object}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.Object}') |  |
+| destinationType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy-System-Object,System-Type-'></a>
+### Copy(source,destinationType) `method`
+
+##### Summary
+
+Makes a shallow copy of a similar object (same properties!)
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| destinationType | [System.Type](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Type 'System.Type') |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-CopyList``1-System-Object-'></a>
+### CopyList\`\`1(source) `method`
+
+##### Summary
+
+Copies an array (source) to a destination array of type T
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-CopyList``1-System-Object,System-Collections-Generic-List{System-String}-'></a>
+### CopyList\`\`1(source,skipParams) `method`
+
+##### Summary
+
+Copies an array (source) to a destination array of type T that skips the parameters in skipParams list
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| skipParams | [System.Collections.Generic.List{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.String}') |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy``1-System-Object,System-Collections-Generic-List{System-String}-'></a>
+### Copy\`\`1(source,skipParams) `method`
+
+##### Summary
+
+Makes a shallow copy of a similar object (same properties!)
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| skipParams | [System.Collections.Generic.List{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.String}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy``1-System-Object-'></a>
+### Copy\`\`1(source) `method`
+
+##### Summary
+
+Makes a shallow copy of a similar object (same properties!)
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Modify-System-Object,System-Object-'></a>
+### Modify(source,destination) `method`
+
+##### Summary
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| destination | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Modify-System-Object,System-Object,System-Collections-Generic-List{System-String}-'></a>
+### Modify(source,destination,skipParams) `method`
+
+##### Summary
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| source | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| destination | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
+| skipParams | [System.Collections.Generic.List{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.String}') | list of parameter names to be ignored |
 
 <a name='T-Dotnet-CommonHelpers-Extensions-StringExtensions'></a>
 ## StringExtensions `type`
