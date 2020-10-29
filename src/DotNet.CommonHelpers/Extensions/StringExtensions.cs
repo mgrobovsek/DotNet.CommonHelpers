@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -411,6 +412,8 @@ namespace Dotnet.CommonHelpers.Extensions
             return a == b;
         }
 
+
+        private static readonly MD5 _md5 = System.Security.Cryptography.MD5.Create();
         /// <summary>
         /// Returns a MD5 hash of the string
         /// </summary>    
@@ -421,13 +424,25 @@ namespace Dotnet.CommonHelpers.Extensions
         /// </example>
         public static string MD5(this string input)
         {
-            using (var md5Hasher = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] data = md5Hasher.ComputeHash(Encoding.Unicode.GetBytes(input));
-                return BitConverter.ToString(data).Replace("-", string.Empty);
-            }            
+            byte[] data = _md5.ComputeHash(Encoding.Unicode.GetBytes(input));
+            return BitConverter.ToString(data).Replace("-", string.Empty);
         }
 
+        private static readonly SHA1 _sha1 = System.Security.Cryptography.SHA1.Create();
+        
+        /// <summary>
+        /// Returns a SHA1 hash of the string
+        /// </summary>    
+        /// <example>
+        /// <code lang="csharp">
+        /// var ret = "test".SHA1();  // returns "C8059E2EC7419F590E79D7F1B774BFE6"
+        /// </code>
+        /// </example>
+        public static string SHA1(this string input)
+        {
+            byte[] data = _sha1.ComputeHash(Encoding.Unicode.GetBytes(input));
+            return BitConverter.ToString(data).Replace("-", string.Empty);
+        }
         /// <summary>
         /// Reverses the string       
         /// </summary>        
@@ -436,12 +451,24 @@ namespace Dotnet.CommonHelpers.Extensions
         /// var ret = "ABCD".Reverse(); // returns "DCBA"
         /// </code>
         /// </example>
-        
+
         public static string Reverse(this string s)
         {
             char[] arr = s.ToCharArray();            
             Array.Reverse(arr);
             return new string(arr);
+        }
+
+        /// <summary>
+        /// Remove spaces and newlines from string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>Clean string, without spaces and newlines</returns>
+        public static string RemoveSpacesAndNewLines(this string input)
+        {
+            input = Regex.Replace(input, @"\s+", " ").Trim();
+            input = Regex.Replace(input, @"\t|\n|\r", string.Empty);
+            return input;
         }
     }
 }
