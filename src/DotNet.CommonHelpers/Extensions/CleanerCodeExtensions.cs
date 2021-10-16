@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DotNet.CommonHelpers.Extensions
 {
+    /// <summary>
+    /// Extensions that make the code easier to read and mentain
+    /// </summary>
     public static class CleanerCodeExtensions
     {
         /// <summary>

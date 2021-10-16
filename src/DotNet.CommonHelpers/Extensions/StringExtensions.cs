@@ -429,7 +429,7 @@ namespace Dotnet.CommonHelpers.Extensions
         }
 
         private static readonly SHA1 _sha1 = System.Security.Cryptography.SHA1.Create();
-        
+
         /// <summary>
         /// Returns a SHA1 hash of the string
         /// </summary>    
@@ -454,7 +454,7 @@ namespace Dotnet.CommonHelpers.Extensions
 
         public static string Reverse(this string s)
         {
-            char[] arr = s.ToCharArray();            
+            char[] arr = s.ToCharArray();
             Array.Reverse(arr);
             return new string(arr);
         }
