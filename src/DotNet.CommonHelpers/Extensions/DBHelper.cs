@@ -38,12 +38,10 @@ namespace DotNet.CommonHelpers.Extensions
             var t = new DataTable();
             try
             {
-                using (var conn = new SqlConnection(connectionString ?? ConnectionString))
-                using (var da = new SqlDataAdapter(sqlQuery, conn))
-                {
-                    da.SelectCommand.CommandTimeout = timeout ?? QueryCommandTimeout;
-                    da.Fill(t);
-                }
+                using var conn = new SqlConnection(connectionString ?? ConnectionString);
+                using var da = new SqlDataAdapter(sqlQuery, conn);
+                da.SelectCommand.CommandTimeout = timeout ?? QueryCommandTimeout;
+                da.Fill(t);
             }
             catch (Exception ex)
             {

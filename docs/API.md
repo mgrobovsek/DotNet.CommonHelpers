@@ -10,10 +10,22 @@
   - [#ctor(info,context)](#M-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException-#ctor-System-Runtime-Serialization-SerializationInfo,System-Runtime-Serialization-StreamingContext- 'DotNet.CommonHelpers.Exceptions.AppSettingNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)')
 - [AppSettings](#T-DotNet-CommonHelpers-AppSettings 'DotNet.CommonHelpers.AppSettings')
   - [Get\`\`1(key)](#M-DotNet-CommonHelpers-AppSettings-Get``1-System-String- 'DotNet.CommonHelpers.AppSettings.Get``1(System.String)')
+- [AsyncHelper](#T-DotNet-CommonHelpers-Extensions-AsyncHelper 'DotNet.CommonHelpers.Extensions.AsyncHelper')
+  - [RunSync(func)](#M-DotNet-CommonHelpers-Extensions-AsyncHelper-RunSync-System-Func{System-Threading-Tasks-Task}- 'DotNet.CommonHelpers.Extensions.AsyncHelper.RunSync(System.Func{System.Threading.Tasks.Task})')
+  - [RunSync\`\`1(func)](#M-DotNet-CommonHelpers-Extensions-AsyncHelper-RunSync``1-System-Func{System-Threading-Tasks-Task{``0}}- 'DotNet.CommonHelpers.Extensions.AsyncHelper.RunSync``1(System.Func{System.Threading.Tasks.Task{``0}})')
+- [CleanerCodeExtensions](#T-DotNet-CommonHelpers-Extensions-CleanerCodeExtensions 'DotNet.CommonHelpers.Extensions.CleanerCodeExtensions')
+  - [Require\`\`1(param,condition)](#M-DotNet-CommonHelpers-Extensions-CleanerCodeExtensions-Require``1-``0,System-Func{``0,System-Boolean}- 'DotNet.CommonHelpers.Extensions.CleanerCodeExtensions.Require``1(``0,System.Func{``0,System.Boolean})')
 - [DBHelper](#T-DotNet-CommonHelpers-Extensions-DBHelper 'DotNet.CommonHelpers.Extensions.DBHelper')
   - [ConnectionString](#P-DotNet-CommonHelpers-Extensions-DBHelper-ConnectionString 'DotNet.CommonHelpers.Extensions.DBHelper.ConnectionString')
   - [QueryCommandTimeout](#P-DotNet-CommonHelpers-Extensions-DBHelper-QueryCommandTimeout 'DotNet.CommonHelpers.Extensions.DBHelper.QueryCommandTimeout')
   - [QueryDT(sqlQuery,connectionString,timeout)](#M-DotNet-CommonHelpers-Extensions-DBHelper-QueryDT-System-String,System-String,System-Nullable{System-Int32}- 'DotNet.CommonHelpers.Extensions.DBHelper.QueryDT(System.String,System.String,System.Nullable{System.Int32})')
+- [LinkedListExtension](#T-DotNet-CommonHelpers-Extensions-LinkedListExtension 'DotNet.CommonHelpers.Extensions.LinkedListExtension')
+  - [EnumerateNodes\`\`1()](#M-DotNet-CommonHelpers-Extensions-LinkedListExtension-EnumerateNodes``1-System-Collections-Generic-LinkedList{``0}- 'DotNet.CommonHelpers.Extensions.LinkedListExtension.EnumerateNodes``1(System.Collections.Generic.LinkedList{``0})')
+  - [NextList\`\`1()](#M-DotNet-CommonHelpers-Extensions-LinkedListExtension-NextList``1-System-Collections-Generic-LinkedListNode{``0},System-Int32- 'DotNet.CommonHelpers.Extensions.LinkedListExtension.NextList``1(System.Collections.Generic.LinkedListNode{``0},System.Int32)')
+  - [NodeAt\`\`1()](#M-DotNet-CommonHelpers-Extensions-LinkedListExtension-NodeAt``1-System-Collections-Generic-LinkedList{``0},System-Int32- 'DotNet.CommonHelpers.Extensions.LinkedListExtension.NodeAt``1(System.Collections.Generic.LinkedList{``0},System.Int32)')
+  - [PreviousList\`\`1()](#M-DotNet-CommonHelpers-Extensions-LinkedListExtension-PreviousList``1-System-Collections-Generic-LinkedListNode{``0},System-Int32- 'DotNet.CommonHelpers.Extensions.LinkedListExtension.PreviousList``1(System.Collections.Generic.LinkedListNode{``0},System.Int32)')
+  - [TailNodeAt\`\`1()](#M-DotNet-CommonHelpers-Extensions-LinkedListExtension-TailNodeAt``1-System-Collections-Generic-LinkedList{``0},System-Int32- 'DotNet.CommonHelpers.Extensions.LinkedListExtension.TailNodeAt``1(System.Collections.Generic.LinkedList{``0},System.Int32)')
+  - [Tail\`\`1()](#M-DotNet-CommonHelpers-Extensions-LinkedListExtension-Tail``1-System-Collections-Generic-LinkedList{``0},System-Int32- 'DotNet.CommonHelpers.Extensions.LinkedListExtension.Tail``1(System.Collections.Generic.LinkedList{``0},System.Int32)')
 - [ObjectShredder](#T-DotNet-CommonHelpers-Extensions-ObjectShredder 'DotNet.CommonHelpers.Extensions.ObjectShredder')
   - [EnumerableToDataTable\`\`1(varlist)](#M-DotNet-CommonHelpers-Extensions-ObjectShredder-EnumerableToDataTable``1-System-Collections-Generic-IEnumerable{``0}- 'DotNet.CommonHelpers.Extensions.ObjectShredder.EnumerableToDataTable``1(System.Collections.Generic.IEnumerable{``0})')
 - [RawQuery](#T-DotNet-CommonHelpers-Extensions-RawQuery 'DotNet.CommonHelpers.Extensions.RawQuery')
@@ -33,6 +45,9 @@
   - [Copy\`\`1(source)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Copy``1-System-Object- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Copy``1(System.Object)')
   - [Modify(source,destination)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Modify-System-Object,System-Object- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Modify(System.Object,System.Object)')
   - [Modify(source,destination,skipParams)](#M-DotNet-CommonHelpers-Extensions-ReflectionCopy-Modify-System-Object,System-Object,System-Collections-Generic-List{System-String}- 'DotNet.CommonHelpers.Extensions.ReflectionCopy.Modify(System.Object,System.Object,System.Collections.Generic.List{System.String})')
+- [SerializationExtension](#T-DotNet-CommonHelpers-Extensions-SerializationExtension 'DotNet.CommonHelpers.Extensions.SerializationExtension')
+  - [XmlDeserialize\`\`1(xml)](#M-DotNet-CommonHelpers-Extensions-SerializationExtension-XmlDeserialize``1-System-String- 'DotNet.CommonHelpers.Extensions.SerializationExtension.XmlDeserialize``1(System.String)')
+  - [XmlSerialize\`\`1(obj)](#M-DotNet-CommonHelpers-Extensions-SerializationExtension-XmlSerialize``1-``0- 'DotNet.CommonHelpers.Extensions.SerializationExtension.XmlSerialize``1(``0)')
 - [StringExtensions](#T-Dotnet-CommonHelpers-Extensions-StringExtensions 'Dotnet.CommonHelpers.Extensions.StringExtensions')
   - [SpecialChars](#F-Dotnet-CommonHelpers-Extensions-StringExtensions-SpecialChars 'Dotnet.CommonHelpers.Extensions.StringExtensions.SpecialChars')
   - [ConvertHexToBin()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-ConvertHexToBin-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.ConvertHexToBin(System.String)')
@@ -48,9 +63,11 @@
   - [RemoveDiacritics()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveDiacritics-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.RemoveDiacritics(System.String)')
   - [RemoveDiacriticsAndNormalize()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveDiacriticsAndNormalize-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.RemoveDiacriticsAndNormalize(System.String)')
   - [RemoveHtmlTags(text)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveHtmlTags-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.RemoveHtmlTags(System.String)')
+  - [RemoveSpacesAndNewLines(input)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveSpacesAndNewLines-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.RemoveSpacesAndNewLines(System.String)')
   - [RemoveStrings(text,tags)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveStrings-System-String,System-String[]- 'Dotnet.CommonHelpers.Extensions.StringExtensions.RemoveStrings(System.String,System.String[])')
   - [Reverse()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-Reverse-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.Reverse(System.String)')
   - [Right(value,length)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-Right-System-String,System-Int32- 'Dotnet.CommonHelpers.Extensions.StringExtensions.Right(System.String,System.Int32)')
+  - [SHA1()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-SHA1-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.SHA1(System.String)')
   - [SplitAtFirstSpace(text)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-SplitAtFirstSpace-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.SplitAtFirstSpace(System.String)')
   - [StringToIntArray()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-StringToIntArray-System-String,System-Char- 'Dotnet.CommonHelpers.Extensions.StringExtensions.StringToIntArray(System.String,System.Char)')
   - [ToDate()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-ToDate-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.ToDate(System.String)')
@@ -59,6 +76,7 @@
   - [TrimStartSpecialChars()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-TrimStartSpecialChars-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.TrimStartSpecialChars(System.String)')
   - [TruncateAtWord(text,length)](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-TruncateAtWord-System-String,System-Int32- 'Dotnet.CommonHelpers.Extensions.StringExtensions.TruncateAtWord(System.String,System.Int32)')
   - [TryParseInt32()](#M-Dotnet-CommonHelpers-Extensions-StringExtensions-TryParseInt32-System-String- 'Dotnet.CommonHelpers.Extensions.StringExtensions.TryParseInt32(System.String)')
+- [ValueObject](#T-DotNet-CommonHelpers-Extensions-ValueObject 'DotNet.CommonHelpers.Extensions.ValueObject')
 
 <a name='T-DotNet-CommonHelpers-Exceptions-AppSettingNotFoundException'></a>
 ## AppSettingNotFoundException `type`
@@ -170,6 +188,91 @@ Easier reading of `App.config` parameters.
 var timeret = AppSettings.Get&lt;int&gt;("Timeout");                
 ```
 
+<a name='T-DotNet-CommonHelpers-Extensions-AsyncHelper'></a>
+## AsyncHelper `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Helper for running async functions synchronously
+
+<a name='M-DotNet-CommonHelpers-Extensions-AsyncHelper-RunSync-System-Func{System-Threading-Tasks-Task}-'></a>
+### RunSync(func) `method`
+
+##### Summary
+
+Runs an async method synchronously
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| func | [System.Func{System.Threading.Tasks.Task}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{System.Threading.Tasks.Task}') |  |
+
+<a name='M-DotNet-CommonHelpers-Extensions-AsyncHelper-RunSync``1-System-Func{System-Threading-Tasks-Task{``0}}-'></a>
+### RunSync\`\`1(func) `method`
+
+##### Summary
+
+Runs an async function synchronously
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| func | [System.Func{System.Threading.Tasks.Task{\`\`0}}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{System.Threading.Tasks.Task{``0}}') |  |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| TResult |  |
+
+<a name='T-DotNet-CommonHelpers-Extensions-CleanerCodeExtensions'></a>
+## CleanerCodeExtensions `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Extensions that make the code easier to read and mentain
+
+<a name='M-DotNet-CommonHelpers-Extensions-CleanerCodeExtensions-Require``1-``0,System-Func{``0,System-Boolean}-'></a>
+### Require\`\`1(param,condition) `method`
+
+##### Summary
+
+Checks if the parameter meets the condition. It throws an exception if it does not
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| param | [\`\`0](#T-``0 '``0') | parameter to be checked |
+| condition | [System.Func{\`\`0,System.Boolean}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Func 'System.Func{``0,System.Boolean}') | Condition to be met |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T |  |
+
+##### Example
+
+int amount = 30;
+string productName = "";
+amount.Require(a=>a>0);
+productName.Require(p=>!string.IsNullOrWhiteSpace(p));
+
 <a name='T-DotNet-CommonHelpers-Extensions-DBHelper'></a>
 ## DBHelper `type`
 
@@ -220,6 +323,83 @@ Results of the query in a datatable
 ```csharp
 var data = "SELECT * FROM [dbo].[Table]".QueryDT(); // gets results of the query as a DataTable        
 ```
+
+<a name='T-DotNet-CommonHelpers-Extensions-LinkedListExtension'></a>
+## LinkedListExtension `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Linked list extensions
+
+<a name='M-DotNet-CommonHelpers-Extensions-LinkedListExtension-EnumerateNodes``1-System-Collections-Generic-LinkedList{``0}-'></a>
+### EnumerateNodes\`\`1() `method`
+
+##### Summary
+
+Enumerates the nodes so you can walk them with linq
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-DotNet-CommonHelpers-Extensions-LinkedListExtension-NextList``1-System-Collections-Generic-LinkedListNode{``0},System-Int32-'></a>
+### NextList\`\`1() `method`
+
+##### Summary
+
+Returns the list of length items after (including) the current node (if end comes first, the list is shorter)
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-DotNet-CommonHelpers-Extensions-LinkedListExtension-NodeAt``1-System-Collections-Generic-LinkedList{``0},System-Int32-'></a>
+### NodeAt\`\`1() `method`
+
+##### Summary
+
+Returns node at postion pos from start
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-DotNet-CommonHelpers-Extensions-LinkedListExtension-PreviousList``1-System-Collections-Generic-LinkedListNode{``0},System-Int32-'></a>
+### PreviousList\`\`1() `method`
+
+##### Summary
+
+Returns the list of length items before (including) the current node (if end comes first, the list is shorter)
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-DotNet-CommonHelpers-Extensions-LinkedListExtension-TailNodeAt``1-System-Collections-Generic-LinkedList{``0},System-Int32-'></a>
+### TailNodeAt\`\`1() `method`
+
+##### Summary
+
+Returns node with distance pos from tail
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-DotNet-CommonHelpers-Extensions-LinkedListExtension-Tail``1-System-Collections-Generic-LinkedList{``0},System-Int32-'></a>
+### Tail\`\`1() `method`
+
+##### Summary
+
+Returns last "length" number of items in the list. If the list is shorter, the result will be shorter than length.
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-DotNet-CommonHelpers-Extensions-ObjectShredder'></a>
 ## ObjectShredder `type`
@@ -657,6 +837,63 @@ Makes a shallow copy of a similar object (same properties!)
 | destination | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') |  |
 | skipParams | [System.Collections.Generic.List{System.String}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.List 'System.Collections.Generic.List{System.String}') | list of parameter names to be ignored |
 
+<a name='T-DotNet-CommonHelpers-Extensions-SerializationExtension'></a>
+## SerializationExtension `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Easier object serialization and deserialization
+
+<a name='M-DotNet-CommonHelpers-Extensions-SerializationExtension-XmlDeserialize``1-System-String-'></a>
+### XmlDeserialize\`\`1(xml) `method`
+
+##### Summary
+
+Deserializes an xml string in to an object of Type T
+
+##### Returns
+
+A new object of type T is successful, null if failed
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| xml | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Xml as string to deserialize from |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Any class type |
+
+<a name='M-DotNet-CommonHelpers-Extensions-SerializationExtension-XmlSerialize``1-``0-'></a>
+### XmlSerialize\`\`1(obj) `method`
+
+##### Summary
+
+Serializes an object of type T in to an xml string
+
+##### Returns
+
+A string that represents Xml, empty otherwise
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| obj | [\`\`0](#T-``0 '``0') | Object to serialize |
+
+##### Generic Types
+
+| Name | Description |
+| ---- | ----------- |
+| T | Any class type |
+
 <a name='T-Dotnet-CommonHelpers-Extensions-StringExtensions'></a>
 ## StringExtensions `type`
 
@@ -920,6 +1157,23 @@ Text without html tags
 var ret = "
 ```
 
+<a name='M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveSpacesAndNewLines-System-String-'></a>
+### RemoveSpacesAndNewLines(input) `method`
+
+##### Summary
+
+Remove spaces and newlines from string
+
+##### Returns
+
+Clean string, without spaces and newlines
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| input | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-Dotnet-CommonHelpers-Extensions-StringExtensions-RemoveStrings-System-String,System-String[]-'></a>
 ### RemoveStrings(text,tags) `method`
 
@@ -977,6 +1231,23 @@ right `lenght` of characters
 
 ```csharp
 var ret = "testno".Right(2); // returns "no"
+```
+
+<a name='M-Dotnet-CommonHelpers-Extensions-StringExtensions-SHA1-System-String-'></a>
+### SHA1() `method`
+
+##### Summary
+
+Returns a SHA1 hash of the string
+
+##### Parameters
+
+This method has no parameters.
+
+##### Example
+
+```csharp
+var ret = "test".SHA1();  // returns "C8059E2EC7419F590E79D7F1B774BFE6"
 ```
 
 <a name='M-Dotnet-CommonHelpers-Extensions-StringExtensions-SplitAtFirstSpace-System-String-'></a>
@@ -1123,3 +1394,14 @@ This method has no parameters.
 var ret = "! !?someString!".TryParseInt32(); // returns null
 var out2 = "123".TryParseInt32(); // returns 123
 ```
+
+<a name='T-DotNet-CommonHelpers-Extensions-ValueObject'></a>
+## ValueObject `type`
+
+##### Namespace
+
+DotNet.CommonHelpers.Extensions
+
+##### Summary
+
+Learn more: https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/implement-value-objects
