@@ -143,7 +143,7 @@ namespace Dotnet.CommonHelpers.Extensions
             if (text == null || text.Length < length)
                 return text;
             var cutIndex = text.LastIndexOf(" ", length, StringComparison.Ordinal);
-            return string.Format("{0}...", text[..((cutIndex > 0) ? cutIndex : length)].Trim());
+            return string.Format("{0}...", text.Substring(0, (cutIndex > 0) ? cutIndex : length).Trim());
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace Dotnet.CommonHelpers.Extensions
         {
             if (s.Length <= length)
                 return s;
-            return s[..length];
+            return s.Substring(0, length);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace Dotnet.CommonHelpers.Extensions
         /// </example>        
         public static string Right(this string value, int length)
         {
-            return value[^length..];
+            return value.Substring(value.Length - length);
         }
 
         /// <summary>
@@ -314,20 +314,20 @@ namespace Dotnet.CommonHelpers.Extensions
             // remove the protocol prefix
             if (start > strlen || start <= -1 + 3)
                 return input.Trim(trim); ;
-            input = input[start..strlen];
+            input = input.Substring(start, strlen - start);
 
             // remove parameters (?)
             int endParam = input.IndexOf('?');
             if (endParam > -1)
             {
-                input = input[..endParam].Trim();
+                input = input.Substring(0, endParam).Trim();
             }
 
             // remove parameters (#)
             endParam = input.IndexOf('#');
             if (endParam > -1)
             {
-                input = input[..endParam].Trim();
+                input = input.Substring(0, endParam).Trim();
             }
 
             string[] items = input.Split('/');

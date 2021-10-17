@@ -18,9 +18,11 @@ namespace DotNet.CommonHelpers.Extensions
             if (obj == null) throw new ArgumentNullException("obj");
 
             var serializer = new XmlSerializer(typeof(T));
-            using var writer = new StringWriter();
-            serializer.Serialize(writer, obj);
-            return writer.ToString();
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, obj);
+                return writer.ToString();
+            }
         }
 
         /// <summary>Deserializes an xml string in to an object of Type T</summary>
@@ -32,9 +34,11 @@ namespace DotNet.CommonHelpers.Extensions
             if (xml == null) throw new ArgumentNullException("xml");
 
             var serializer = new XmlSerializer(typeof(T));
-            using var reader = new StringReader(xml);
-            try { return (T)serializer.Deserialize(reader); }
-            catch { return null; } // Could not be deserialized to this type.
+            using (var reader = new StringReader(xml))
+            {
+                try { return (T)serializer.Deserialize(reader); }
+                catch { return null; } // Could not be deserialized to this type.
+            }
         }
     }
 }

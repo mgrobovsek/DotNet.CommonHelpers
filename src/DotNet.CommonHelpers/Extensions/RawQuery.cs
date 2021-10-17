@@ -51,10 +51,12 @@ namespace DotNet.CommonHelpers.Extensions
         /// </returns>
         public static IEnumerable<TEntity> Query<TEntity>(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = default, CommandType? commandType = default)
         {
-            using IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString);
-            dbConnection.Open();
-            var res = dbConnection.Query<TEntity>(sql, param, transaction, buffered, commandTimeout, commandType);
-            return res;
+            using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
+            {
+                dbConnection.Open();
+                var res = dbConnection.Query<TEntity>(sql, param, transaction, buffered, commandTimeout, commandType);
+                return res;
+            }
         }
 
         /// <summary>
@@ -83,11 +85,13 @@ namespace DotNet.CommonHelpers.Extensions
         /// </returns>
         public static async Task<IEnumerable<TEntity>> QueryAsync<TEntity>(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, int? commandTimeout = default, CommandType? commandType = default)
         {
-            using IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString);
+            using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
+            {
 
-            dbConnection.Open();
-            var res = await dbConnection.QueryAsync<TEntity>(sql, param, transaction, commandTimeout, commandType);
-            return res;
+                dbConnection.Open();
+                var res = await dbConnection.QueryAsync<TEntity>(sql, param, transaction, commandTimeout, commandType);
+                return res;
+            }
         }
 
         /// <summary>
@@ -108,10 +112,12 @@ namespace DotNet.CommonHelpers.Extensions
         /// <returns>The first cell returned, as <typeparamref name="TEntity"/>.</returns>
         public static TEntity ExecuteScalar<TEntity>(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, int? commandTimeout = default, CommandType? commandType = default)
         {
-            using IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString);
-            dbConnection.Open();
-            var res = dbConnection.ExecuteScalar<TEntity>(sql, param, transaction, commandTimeout, commandType);
-            return res;
+            using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
+            {
+                dbConnection.Open();
+                var res = dbConnection.ExecuteScalar<TEntity>(sql, param, transaction, commandTimeout, commandType);
+                return res;
+            }
 
         }
 
@@ -133,10 +139,12 @@ namespace DotNet.CommonHelpers.Extensions
         /// <returns>The first cell returned, as <typeparamref name="TEntity"/>.</returns>
         public static async Task<TEntity> ExecuteScalarAsync<TEntity>(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, int? commandTimeout = default, CommandType? commandType = default)
         {
-            using IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString);
-            dbConnection.Open();
-            var res = await dbConnection.ExecuteScalarAsync<TEntity>(sql, param, transaction, commandTimeout, commandType);
-            return res;
+            using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
+            {
+                dbConnection.Open();
+                var res = await dbConnection.ExecuteScalarAsync<TEntity>(sql, param, transaction, commandTimeout, commandType);
+                return res;
+            }
         }
 
         /// <summary>
@@ -156,10 +164,12 @@ namespace DotNet.CommonHelpers.Extensions
         /// <returns>The number of rows affected.</returns>
         public static async Task<int> ExecuteAsync(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, int? commandTimeout = default, CommandType? commandType = default)
         {
-            using IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString);
-            dbConnection.Open();
-            var res = await dbConnection.ExecuteAsync(sql, param, transaction, commandTimeout, commandType);
-            return res;
+            using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
+            {
+                dbConnection.Open();
+                var res = await dbConnection.ExecuteAsync(sql, param, transaction, commandTimeout, commandType);
+                return res;
+            }
         }
 
 
@@ -180,10 +190,12 @@ namespace DotNet.CommonHelpers.Extensions
         /// <returns>The number of rows affected.</returns>
         public static int Execute(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, int? commandTimeout = default, CommandType? commandType = default)
         {
-            using IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString);
-            dbConnection.Open();
-            var res = dbConnection.Execute(sql, param, transaction, commandTimeout, commandType);
-            return res;
+            using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
+            {
+                dbConnection.Open();
+                var res = dbConnection.Execute(sql, param, transaction, commandTimeout, commandType);
+                return res;
+            }
         }
     }
 }

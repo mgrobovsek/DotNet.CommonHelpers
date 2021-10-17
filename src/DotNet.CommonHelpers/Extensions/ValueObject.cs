@@ -10,9 +10,6 @@ namespace DotNet.CommonHelpers.Extensions
     /// </summary>
     public abstract class ValueObject
     {
-        /// <summary>
-        /// Returns true if left and right are the same
-        /// </summary>        
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
             if (left is null ^ right is null)
@@ -22,22 +19,14 @@ namespace DotNet.CommonHelpers.Extensions
 
             return left?.Equals(right) != false;
         }
-        /// <summary>
-        /// Returns true if left and right are not equal
-        /// </summary>        
+
         protected static bool NotEqualOperator(ValueObject left, ValueObject right)
         {
             return !(EqualOperator(left, right));
         }
-        
-        /// <summary>
-        /// Returns all components that must match if the objects are equal
-        /// </summary>        
+
         protected abstract IEnumerable<object> GetEqualityComponents();
-        
-        /// <summary>
-        /// Returns true if obj equals to this
-        /// </summary>        
+
         public override bool Equals(object obj)
         {
             if (obj == null || obj.GetType() != GetType())
@@ -49,9 +38,6 @@ namespace DotNet.CommonHelpers.Extensions
             return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
         }
 
-        /// <summary>
-        /// Serves as default hash function
-        /// </summary>        
         public override int GetHashCode()
         {
             return GetEqualityComponents()
