@@ -54,7 +54,7 @@ namespace DotNet.CommonHelpers.Extensions
             using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
             {
                 dbConnection.Open();
-                var res = dbConnection.Query<TEntity>(sql, param, transaction, buffered, commandTimeout, commandType);                
+                var res = dbConnection.Query<TEntity>(sql, param, transaction, buffered, commandTimeout, commandType);
                 return res;
             }
         }
@@ -83,11 +83,11 @@ namespace DotNet.CommonHelpers.Extensions
         /// A sequence of data of the supplied type; if a basic type (int, string, etc) is queried then the data from the first column in assumed, otherwise an instance is
         /// created per row, and a direct column-name===member-name mapping is assumed (case insensitive).
         /// </returns>
-        public static async Task<IEnumerable<TEntity>> QueryAsync<TEntity>(this string sql, string cString = null, object param = null, IDbTransaction transaction = null,  int? commandTimeout = default, CommandType? commandType = default)
+        public static async Task<IEnumerable<TEntity>> QueryAsync<TEntity>(this string sql, string cString = null, object param = null, IDbTransaction transaction = null, int? commandTimeout = default, CommandType? commandType = default)
         {
             using (IDbConnection dbConnection = new SqlConnection(cString ?? ConnectionString))
             {
-                
+
                 dbConnection.Open();
                 var res = await dbConnection.QueryAsync<TEntity>(sql, param, transaction, commandTimeout, commandType);
                 return res;
@@ -118,7 +118,7 @@ namespace DotNet.CommonHelpers.Extensions
                 var res = dbConnection.ExecuteScalar<TEntity>(sql, param, transaction, commandTimeout, commandType);
                 return res;
             }
-            
+
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace DotNet.CommonHelpers.Extensions
                 dbConnection.Open();
                 var res = await dbConnection.ExecuteAsync(sql, param, transaction, commandTimeout, commandType);
                 return res;
-            }            
+            }
         }
 
 
