@@ -1,7 +1,9 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -24,6 +26,25 @@ namespace Dotnet.CommonHelpers.Extensions
             if (input.StartsWith(openingQuote) && input.EndsWith(closingQuote))
                 return true;
             return false;
+        }
+
+        /// <summary>
+        /// Strips html tags from input
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string StripHtml(this string input)
+        {
+            if (input is null)
+                return null;
+            var decoded = WebUtility.HtmlDecode(input);
+            var doc = new HtmlDocument
+            {
+                OptionFixNestedTags = false
+            };
+            doc.LoadHtml(decoded);
+
+            return doc.DocumentNode.InnerText;
         }
 
         /// <summary>
