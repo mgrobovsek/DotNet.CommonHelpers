@@ -9,7 +9,7 @@ namespace DotNet.CommonHelpers.Extensions
     /// </summary>
     public static class AsyncHelper
     {
-        private static readonly TaskFactory _myTaskFactory = new TaskFactory(CancellationToken.None,
+        private static readonly TaskFactory _myTaskFactory = new(CancellationToken.None,
                       TaskCreationOptions.None,
                       TaskContinuationOptions.None,
                       TaskScheduler.Default);

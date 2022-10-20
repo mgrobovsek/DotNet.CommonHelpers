@@ -51,7 +51,7 @@ namespace DotNet.CommonHelpers.Extensions
         /// <returns></returns>
         public static T Copy<T>(this object source, List<string> skipParams) where T : new()
         {
-            T newObject = new T();
+            T newObject = new();
             Modify(source, newObject, skipParams);
             return newObject;
         }

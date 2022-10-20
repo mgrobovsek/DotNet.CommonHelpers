@@ -1,7 +1,7 @@
 ﻿using DotNet.CommonHelpers.Extensions;
 
 
-foreach(var i in 2..10)
+foreach (var i in 2..10)
     Console.WriteLine(i);
 
 Console.WriteLine("-----------------------");

@@ -164,7 +164,7 @@ namespace Dotnet.CommonHelpers.Extensions
             if (text == null || text.Length < length)
                 return text;
             var cutIndex = text.LastIndexOf(" ", length, StringComparison.Ordinal);
-            return string.Format("{0}...", text.Substring(0, (cutIndex > 0) ? cutIndex : length).Trim());
+            return string.Format("{0}...", text[..((cutIndex > 0) ? cutIndex : length)].Trim());
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Dotnet.CommonHelpers.Extensions
         {
             if (s.Length <= length)
                 return s;
-            return s.Substring(0, length);
+            return s[..length];
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Dotnet.CommonHelpers.Extensions
         /// </example>        
         public static string Right(this string value, int length)
         {
-            return value.Substring(value.Length - length);
+            return value[^length..];
         }
 
         /// <summary>
@@ -335,20 +335,20 @@ namespace Dotnet.CommonHelpers.Extensions
             // remove the protocol prefix
             if (start > strlen || start <= -1 + 3)
                 return input.Trim(trim); ;
-            input = input.Substring(start, strlen - start);
+            input = input[start..strlen];
 
             // remove parameters (?)
             int endParam = input.IndexOf('?');
             if (endParam > -1)
             {
-                input = input.Substring(0, endParam).Trim();
+                input = input[..endParam].Trim();
             }
 
             // remove parameters (#)
             endParam = input.IndexOf('#');
             if (endParam > -1)
             {
-                input = input.Substring(0, endParam).Trim();
+                input = input[..endParam].Trim();
             }
 
             string[] items = input.Split('/');
@@ -406,7 +406,7 @@ namespace Dotnet.CommonHelpers.Extensions
         /// </example>
         public static string ConvertHexToBin(this string hex)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             foreach (var c in hex.ToCharArray())
             {
