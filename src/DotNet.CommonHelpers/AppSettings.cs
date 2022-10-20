@@ -27,7 +27,8 @@ namespace DotNet.CommonHelpers
             if (string.IsNullOrWhiteSpace(appSetting)) throw new AppSettingNotFoundException(key);
 
             var converter = TypeDescriptor.GetConverter(typeof(T));
-            return (T)(converter.ConvertFromInvariantString(appSetting));
+            return (T)(converter.ConvertFromInvariantString(appSetting));            
+                
         }
     }
 }
