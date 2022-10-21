@@ -347,7 +347,10 @@ Syntactic suggar for better looking loops
 ##### Example
 
 ```csharp
-foreach(var i in 1..10)
+foreach(var i in 4..10)
+    Console.WriteLine(i);
+    
+foreach(var i in 42..13)
     Console.WriteLine(i);
 ```
 

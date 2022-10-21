@@ -12,13 +12,16 @@ namespace DotNet.CommonHelpers.Extensions
         /// <param name="range"></param>
         /// <example>
         /// <code lang="csharp">
-        /// foreach(var i in 1..10)
+        /// foreach(var i in 4..10)
+        ///     Console.WriteLine(i);
+        ///     
+        /// foreach(var i in 42..13)
         ///     Console.WriteLine(i);
         /// </code>
         /// </example>
         public static CustomIntEnumerator GetEnumerator(this Range range)
-        {            
-            return new CustomIntEnumerator(range);            
+        {
+            return new CustomIntEnumerator(range);
         }
 
     }
@@ -27,16 +30,14 @@ namespace DotNet.CommonHelpers.Extensions
     {
         private int _current;
         private readonly int _end;
-        private MoveNextDelegate _moveNextAction;
+        private readonly MoveNextDelegate _moveNextAction;
 
-        delegate  bool  MoveNextDelegate();
+        delegate bool MoveNextDelegate();
         public CustomIntEnumerator(Range range)
         {
 
             if (range.End.IsFromEnd)
                 throw new Exception("End of interval must be specified!");
-
-            
 
             if (range.End.Value > range.Start.Value)
             {
@@ -46,24 +47,19 @@ namespace DotNet.CommonHelpers.Extensions
                 _moveNextAction = new MoveNextDelegate(MoveNextInc);
             }
             else
-            {
-                //if (range.Start.IsFromEnd)
-                //    throw new Exception("End of interval must be specified!");
-                //_current = range.End.Value;
-                //_end = range.Start.Value - 1;
-
-                _current = range.Start.Value+1;
+            {         
+                _current = range.Start.Value + 1;
                 _end = range.End.Value;
-                _moveNextAction = new MoveNextDelegate(MoveNextDec);                
+                _moveNextAction = new MoveNextDelegate(MoveNextDec);
             }
 
         }
 
-        
+
 
         public int Current => _current;
         public bool MoveNext() => _moveNextAction();
-        
+
         private bool MoveNextInc()
         {
             _current++;
@@ -74,7 +70,5 @@ namespace DotNet.CommonHelpers.Extensions
             _current--;
             return _current >= _end;
         }
-
     }
-   
 }
